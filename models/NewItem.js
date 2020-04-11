@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const ItemSchema = new Schema({
+    item: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    }
+});
+
+const NewItem = mongoose.model('NewItem', ItemSchema, 'NewItem');
+
+module.exports = NewItem;
