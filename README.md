@@ -9,4 +9,4 @@ Data Flow
 https://drive.google.com/file/d/1decM9vjIAuttBEJNJiZqQTHe78XRlBC1/view?usp=sharing
 
 
-![Project image](/public/projectimage.png)
+![Project image](/client/public/projectimage.png)
