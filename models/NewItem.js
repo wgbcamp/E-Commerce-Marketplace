@@ -14,6 +14,22 @@ const ItemSchema = new Schema({
         type: String,
         required: true
     },
+    condition: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        require: true
+    },
+    shipping: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: true

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
 import SearchAppBar from "./components/headerBar";
+import ItemCard from "./components/ItemCard";
+import PostItem from "./components/PostItem";
 import api from "./utils/api";
 
 class App extends Component {
 state = {
     search: "",
-    fruits: []
+    itemData: []
 };
 
 componentDidMount(){
@@ -23,7 +26,7 @@ handleInputChange = event=>{
 readItem = () => {
     api.readItem()
         .then((res) => {
-            this.setState({ fruits: res.data });
+            this.setState({ itemData: res.data });
             console.log("test" + res);
         })
         .catch((err) => console.log(err));
@@ -41,6 +44,27 @@ render(){
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
             />
+            <br></br>
+            <Grid container spacing={3}>
+            <Grid item xs={9}>
+            <Grid container spacing={3}>
+            {[...this.state.itemData].map((e)=>
+            <Grid item xs={4}>
+            <ItemCard
+                image={"." + e.image}
+                title={e.item}
+                description={e.description}
+                price={"$" + e.price}
+                shipping={e.shipping}
+            />
+            </Grid>
+            )}
+            </Grid>
+            </Grid>
+            <Grid item xs={3}>
+            <PostItem></PostItem>
+            </Grid>
+            </Grid>
             
         </div>
     )
