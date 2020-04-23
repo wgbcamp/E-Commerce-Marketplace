@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import FileUpload from './FileUpload';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+
 
 
     
@@ -45,7 +44,7 @@ export default function TextFieldSizes(props) {
     price: price,
     shippingCost: shippingCost,
     description: description,
-    image: image
+    image: props.imageName
   }
 
   return (
@@ -73,12 +72,16 @@ export default function TextFieldSizes(props) {
         <TextField label={description} id="standard-size-normal" name="PostItemDescription" onChange={e => setDescription(e.target.value)}/>
         </Grid>
         <Grid item xs={12}>
-        <TextField label={image} id="standard-size-normal" onChange={e => setImage(e.target.value)}/>
+        <input type="file" onChange={props.onFileChange} /> 
+              <button onClick={props.onFileUpload}> 
+                Add selected image 
+              </button> 
         </Grid>
         <Grid item xs={12}>
         <Button onClick={(event)=> props.postItem(postData)} variant="contained" color="primary">Submit</Button>
         </Grid>
       </Grid>
+      <h2>{props.imageName}</h2>
     </div>
   );
 }

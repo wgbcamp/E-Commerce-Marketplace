@@ -8,6 +8,9 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,8 +82,11 @@ export default function SearchAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Link to="/" style={{textDecoration: 'none', color:'white'}}><Typography className={classes.title} variant="h6" noWrap>
             E-Commerce
+          </Typography></Link>
+          <Typography className={classes.title} variant="h6" noWrap>
+            
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -98,6 +104,12 @@ export default function SearchAppBar(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          <Grid >
+            <Link to="/post" style={{textDecoration: 'none', color:'white'}}><Button color="inherit">post an item</Button></Link>
+            <Link to="/saved" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">seller history</Button></Link>
+            <Link to="/saved" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">order history</Button></Link>
+          
+          </Grid>
         </Toolbar>
       </AppBar>
       <Button variant="contained" color="default">Clothing</Button>

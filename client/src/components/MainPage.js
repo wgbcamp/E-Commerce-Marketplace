@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import SearchAppBar from "./headerBar";
+import HeaderBar from "./HeaderBar";
 import ItemCard from "./ItemCard";
 import ItemCardPurchased from "./ItemCardPurchased";
-import PostItem from "./PostItem";
 import Button from '@material-ui/core/Button';
 import api from "../utils/api";
-import FileUpload from "./FileUpload";
 
 
 class MainPage extends Component {
@@ -118,7 +116,7 @@ render(){
     return (
         
         <div>
-            <SearchAppBar 
+            <HeaderBar
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
             />
@@ -126,7 +124,7 @@ render(){
             <h2>Items for Sale:</h2>
             <br></br>
             <Grid container spacing={3}>
-            <Grid item xs={9}>
+            <Grid item xs={12}>
             <Grid container spacing={3}>
             {[...this.state.itemData].map((e, index)=>
             <Grid item xs={4}>
@@ -145,23 +143,6 @@ render(){
             </Grid>
             )}
             </Grid>
-            </Grid>
-            <Grid item xs={3}>
-            <PostItem
-                handleInputChange={this.handleInputChange}
-                postItemName={this.state.PostItemName}
-                postItemAmount={this.state.postItemAmount}
-                postItemCategory={this.state.postItemCategory}
-                postItemCondition={this.state.postItemCondition}
-                postItemPrice={this.state.postItemPrice}
-                postItemShippingCost={this.state.postItemShippingCost}
-                postItemDescription={this.state.postItemDescription}
-                postItemImage={this.state.postItemImage}
-                postItem={this.postItem}
-                
-
-            />
-            
             </Grid>
             </Grid>
 

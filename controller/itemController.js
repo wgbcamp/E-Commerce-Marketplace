@@ -1,6 +1,58 @@
 const router = require('express').Router();
 const db = require('../models');
 const mongoose = require('mongoose');
+var multer = require('multer')
+var path = require('path');
+
+//MULTER FILE UPLOAD//
+
+var upload = multer({ dest: './client/public/images/'});
+
+var storage = multer.diskStorage({   
+    destination: function(req, file, cb) { 
+       cb(null, './client/public/images/');    
+    }, 
+    filename: function (req, file, cb) { 
+       cb(null ,  file.originalname );   
+    }
+ });
+
+var upload = multer({ 
+    storage: storage,
+    limits:{fileSize: 1000000},
+    fileFilter: function(req, file, cb){
+        checkFileType(file, cb);
+    }
+}).single('avatar');
+
+function checkFileType(file, cb){
+    // Allowed ext
+    const filetypes = /jpeg|jpg|png/;
+    // Check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    // check mimetype
+    const mimetype = filetypes.test(file.mimetype);
+  
+    if(mimetype && extname){
+        return cb(null, true);
+    }else{
+        cb('Error: Images Only!');
+    }
+  }
+
+
+router.post('/profile', upload, function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  console.log(req.file);
+  res.send(req.file);
+})
+
+//MULTER FILE UPLOAD//
+
+
+
+
 
 
 router.get('/api/item', (req, res) => {
@@ -59,8 +111,6 @@ router.post('/api/item/delete', (req, res) => {
 		});
 })
 
-// router.post('/public/images', upload.single('selectedFile'), (req, res) =>{
-// 	res.send();
-// });
+
 
 module.exports = router;
