@@ -39,9 +39,21 @@ const newItemSeed = [
     }
 ];
 
+
 db.NewItem
     .deleteMany({})
     .then(() => db.NewItem.collection.insertMany(newItemSeed))
+    .then((data) => {
+        // console.log("seeds were successfully inserted");
+        process.exit(0);
+    })
+    .catch((err) => {
+        console.error(err);
+        process.exit(1);
+    });
+
+db.PurchaseItem
+    .deleteMany({})
     .then((data) => {
         console.log("seeds were successfully inserted");
         process.exit(0);

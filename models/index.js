@@ -1,3 +1,4 @@
 module.exports = {
-    NewItem: require("./NewItem")
+    NewItem: require("./NewItem"),
+    PurchaseItem: require("./PurchaseItem")
 };

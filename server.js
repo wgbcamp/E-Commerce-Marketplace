@@ -1,5 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const multer = require('multer');
+const path = require('path');
+const router = express.Router();
 
 const routes = require('./controller/itemController.js')
 

@@ -60,12 +60,6 @@ export default function MediaCard(props) {
         <Button size="small" color="primary">
           Share
         </Button>
-        <Button onClick={(event) => props.deleteItem(props.id, event)} value={props.id} size="small" color="primary">
-          Delete
-        </Button>
-        <Button onClick={props.purchaseItem} value={props.id} size="small" color="primary">
-          Purchase
-        </Button>
       </CardActions>
     </Card>
         
