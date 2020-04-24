@@ -94,6 +94,7 @@ export default function SearchAppBar(props) {
             </div>
             <InputBase
               onChange={props.handleInputChange}
+              onSubmit={props.onSubmit}
               value={props.search}
               name="search"
               placeholder="Search…"
@@ -105,7 +106,8 @@ export default function SearchAppBar(props) {
             />
           </div>
           <Grid >
-            <Link to="/post" style={{textDecoration: 'none', color:'white'}}><Button color="inherit">post an item</Button></Link>
+            <Link to="/search" style={{textDecoration: 'none', color:'white'}}><Button color="inherit" onClick={props.saveCookie}>search</Button></Link>
+            <Link to="/post" style={{textDecoration: 'none', color:'white'}}><Button color="inherit">sell an item</Button></Link>
             <Link to="/saved" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">seller history</Button></Link>
             <Link to="/saved" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">order history</Button></Link>
           

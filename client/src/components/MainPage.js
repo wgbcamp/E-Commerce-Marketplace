@@ -3,11 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import HeaderBar from "./HeaderBar";
 import ItemCard from "./ItemCard";
 import ItemCardPurchased from "./ItemCardPurchased";
-import Button from '@material-ui/core/Button';
 import api from "../utils/api";
 
-
 class MainPage extends Component {
+    
 state = {
     search: "",
     itemData: [],
@@ -37,9 +36,20 @@ handleInputChange = event=>{
     this.setState({
         [name]: value
     });
+    
 }
 
+searchPosts = () =>{
+    var data = {
+        search: this.state.search
+    };
 
+    console.log(data)
+    api.searchPosts(data)
+        .then((res) => {
+            console.log(res)
+        });
+};
 
 readItem = () => {
     api.readItem()
@@ -110,7 +120,9 @@ purchaseItem = (index) =>{
         })
 }
 
-
+saveCookie = () =>{
+    localStorage.setItem("search", this.state.search);
+}
 
 render(){
     return (
@@ -119,6 +131,8 @@ render(){
             <HeaderBar
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
+                searchPosts={this.searchPosts}
+                saveCookie={this.saveCookie}
             />
             <br></br>
             <h2>Items for Sale:</h2>
@@ -131,10 +145,10 @@ render(){
             <ItemCard
                 key={e._id}
                 image={"." + e.image}
-                title={e.item}
+                title={e.name}
                 description={e.description}
                 price={"$" + e.price}
-                shipping={e.shipping}
+                shipping={e.shippingCost}
                 id={e._id} 
                 deleteItem={this.deleteItem}
                 purchaseItem={this.purchaseItem.bind(this, index)}

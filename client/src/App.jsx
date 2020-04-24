@@ -1,18 +1,25 @@
 import React from 'react';
 import MainPage from './components/MainPage';
-import PostItem2 from './components/PostItemFields';
 import PostItemContainer from './components/PostItemContainer';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import SearchResults from './components/SearchResults';
+
+
 
 function App() {
     return (
 
         <div className="App">
 
+
+                
+                
             <Switch>
             <Route exact path ="/" component={MainPage} />
             <Route exact path ="/post" component={PostItemContainer}/>
+            <Route exact path ="/search" component={SearchResults}/>
             </Switch>
+                
         </div>
     )
 }

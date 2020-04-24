@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import api from "../utils/api";
 import PostItemFields from "./PostItemFields";
-import axios from 'axios';
 import HeaderBar from './HeaderBar';
 
 class PostItem3 extends Component {
@@ -9,13 +8,26 @@ class PostItem3 extends Component {
     state = {
         selectedFile: null,
         selectedFileName: "",
-        submissionTime: ""
+        submissionTime: "",
+        search: ""
     };
 
 
     componentDidMount(){
         this.setState({ submissionTime: Date.now() })
     }
+
+    handleInputChange = event=>{
+      const name = event.target.name;
+      const value = event.target.value;
+      this.setState({
+          [name]: value
+      });
+  }
+
+  saveCookie = () =>{
+    localStorage.setItem("search", this.state.search);
+}
 
     onFileChange = event => {
         var test = event.target.value.replace(/^.*[\\\/]/, '');
@@ -41,13 +53,13 @@ class PostItem3 extends Component {
         );
 
         
-
-        axios.post("/profile", formData);
+        api.postImage(formData);
         console.log(this.state.selectedFile);
         console.log("The time was..." + this.state.submissionTime);
         
     };
 
+    
 
     fileData = () => { 
    
@@ -93,7 +105,10 @@ class PostItem3 extends Component {
         return (
             
             <div>
-                <HeaderBar/>
+                <HeaderBar
+                handleInputChange={this.handleInputChange}
+                saveCookie={this.saveCookie}
+                />
                 <PostItemFields
                 postItem={this.postItem}
                 onFileChange={this.onFileChange}

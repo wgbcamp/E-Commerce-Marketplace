@@ -52,7 +52,20 @@ router.post('/profile', upload, function (req, res, next) {
 
 
 
+router.post('/api/item/search', (req, res) => {
+	
+	var query = new RegExp(".*" + req.body.search + ".*", "i");
+	
+	db.NewItem
+		.find( { name: { $regex: query } } )
+		.then((results) => {
+			res.json(results);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
 
+});
 
 
 router.get('/api/item', (req, res) => {
@@ -80,6 +93,7 @@ router.get('/api/item/readpurchase', (req, res) => {
 });
 
 router.post('/api/item', (req, res) => {
+	console.log(req.body);
 	db.NewItem.collection.insertOne(req.body)
 		.then(results => res.json(results))
 		.catch((err)=>{
