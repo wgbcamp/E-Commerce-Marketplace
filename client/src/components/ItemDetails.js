@@ -58,6 +58,9 @@ class ItemDetails extends Component {
         console.log(data);
     
         api.purchaseItem(data)
+            .then((res) =>{
+                console.log(res)
+            });
             
     }
  

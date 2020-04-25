@@ -15,7 +15,7 @@ state = {
 };
 
 componentDidMount(){
-    // this.readPurchases();
+    this.readPurchases();
 
     var x = {
         search: ""
@@ -69,7 +69,14 @@ var thingToDelete = {
 
     api.deleteItem(thingToDelete)
         .then(()=>{
-            this.readItem()
+            var x = {
+                search: ""
+            };
+        
+            api.searchPosts(x)
+                .then((res) => {
+                    this.setState({ itemData: res.data });
+                });
         })
 };
 
