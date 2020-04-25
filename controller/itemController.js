@@ -118,9 +118,7 @@ router.post('/api/item/purchase', (req, res) => {
 })
 
 router.post('/api/item/delete', (req, res) => {
-	console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	
-	console.log("I am" + req.body)
 	let id = mongoose.Types.ObjectId(req.body.thingID);
 	console.log(id);
 	
