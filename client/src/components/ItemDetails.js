@@ -46,12 +46,12 @@ class ItemDetails extends Component {
 
     purchaseItem = () =>{
         var data = {
-            item : this.state.itemData[0].item,
+        name : this.state.itemData[0].name,
         quantity: this.state.itemData[0].quantity,
         type: this.state.itemData[0].type,
         condition: this.state.itemData[0].condition,
         price: this.state.itemData[0].price,
-        shipping: this.state.itemData[0].shipping,
+        shippingCost: this.state.itemData[0].shippingCost,
         description: this.state.itemData[0].description,
         image: this.state.itemData[0].image
         };

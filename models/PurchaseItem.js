@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-    item: {
+    name: {
         type: String,
         required: true
     },
@@ -22,7 +22,7 @@ const ItemSchema = new Schema({
         type: Number,
         require: true
     },
-    shipping: {
+    shippingCost: {
         type: String,
         required: true
     },

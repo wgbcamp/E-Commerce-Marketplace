@@ -5,7 +5,7 @@ export default {
 		return axios.post('/api/item/byID', data)
 	},
 	readPurchases: () => {
-		return axios.post('/api/item/readpurchase');
+		return axios.get('/api/item/readpurchase');
 	},
 	searchPosts: data => {
 		return axios.post('/api/item/search', data);
