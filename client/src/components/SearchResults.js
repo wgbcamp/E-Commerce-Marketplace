@@ -36,6 +36,21 @@ class SearchResults extends Component {
 
     }
 
+    deleteItem = (id, event) =>{
+        event.preventDefault();
+    
+    console.log("This is the ID to Delete");
+    console.log(id);
+    var thingToDelete = {
+        thingID: id
+    }
+    
+        api.deleteItem(thingToDelete)
+            .then(()=>{
+                window.location.reload();    
+            })
+    };
+
     saveCookie = () =>{
         localStorage.setItem("search", this.state.search);
         window.location.reload();    
@@ -68,6 +83,7 @@ class SearchResults extends Component {
                 shipping={e.shippingCost}
                 id={e._id} 
                 saveItemID={this.saveItemID}
+                deleteItem={this.deleteItem}
             />
 
             </Grid>
