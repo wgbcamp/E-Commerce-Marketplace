@@ -124,6 +124,11 @@ saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
 }
 
+saveItemID = (id, event) =>{
+    event.preventDefault();
+    localStorage.setItem("itemID", id)
+}
+
 render(){
     return (
         
@@ -152,6 +157,7 @@ render(){
                 id={e._id} 
                 deleteItem={this.deleteItem}
                 purchaseItem={this.purchaseItem.bind(this, index)}
+                saveItemID={this.saveItemID}
             />
 
             </Grid>

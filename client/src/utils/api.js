@@ -4,6 +4,9 @@ export default {
 	readItem: () => {
 		return axios.get('/api/item');
 	},
+	readItemByID: data => {
+		return axios.get('/api/item:ID')
+	},
 	readPurchases: () => {
 		return axios.get('/api/item/readpurchase');
 	},

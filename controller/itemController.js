@@ -80,6 +80,18 @@ router.get('/api/item', (req, res) => {
 		});
 });
 
+router.get('/api/item:ID', (req, res) => {
+	db.NewItem
+		.find({})
+		.then((results) => {
+			res.json(results);
+			// console.log(results);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
 router.get('/api/item/readpurchase', (req, res) => {
 	db.PurchaseItem
 		.find({})
