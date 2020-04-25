@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 export default {
-	readItem: () => {
-		return axios.get('/api/item');
-	},
 	readItemByID: data => {
 		return axios.post('/api/item/byID', data)
 	},

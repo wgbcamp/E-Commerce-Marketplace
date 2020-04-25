@@ -15,7 +15,6 @@ state = {
 };
 
 componentDidMount(){
-    // this.readItem();
     // this.readPurchases();
 
     var x = {
@@ -49,14 +48,6 @@ searchPosts = () =>{
         });
 };
 
-readItem = () => {
-    api.readItem()
-        .then((res) => {
-            this.setState({ itemData: res.data });
-            console.log(res.data)
-        })
-        .catch((err) => console.log(err));
-};
 
 readPurchases = () => {
     api.readPurchases()

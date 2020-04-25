@@ -68,18 +68,6 @@ router.post('/api/item/search', (req, res) => {
 });
 
 
-router.get('/api/item', (req, res) => {
-	db.NewItem
-		.find({})
-		.then((results) => {
-			res.json(results);
-			// console.log(results);
-		})
-		.catch((err) => {
-			res.json(err);
-		});
-});
-
 router.post('/api/item/byID', (req, res) => {
 	
 	let id = mongoose.Types.ObjectId(req.body.search);
