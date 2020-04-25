@@ -25,11 +25,7 @@ componentDidMount(){
             this.setState({ itemData: res.data });
         });
     
-    api.readPurchases()
-        .then((res) => {
-            console.log(res.data);
-            this.setState({ purchasedItems: res.data });
-        })
+
 }
 
 handleInputChange = event=>{
@@ -39,6 +35,11 @@ handleInputChange = event=>{
         [name]: value
     });
     
+    api.readPurchases()
+    .then((res) => {
+        console.log(res);
+        this.setState({ purchasedItems: res.data });
+    })
 }
 
 
