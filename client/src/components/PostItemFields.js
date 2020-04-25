@@ -28,8 +28,8 @@ export default function TextFieldSizes(props) {
 
   
   const [name, setName] = useState('item name');
-  const [amount, setAmount] = useState('item amount');
-  const [category, setCategory] = useState('item category');
+  const [quantity, setQuantity] = useState('item quantity');
+  const [type, setType] = useState('item category');
   const [condition, setCondition] = useState('item condition');
   const [price, setPrice] = useState('item price');
   const [shippingCost, setShippingCost] = useState('item shipping cost');
@@ -37,9 +37,9 @@ export default function TextFieldSizes(props) {
 
   var postData = {
     name: name,
-    amount: amount,
-    category: category,
-    condiition: condition,
+    quantity: quantity,
+    type: type,
+    condition: condition,
     price: price,
     shippingCost: shippingCost,
     description: description,
@@ -53,10 +53,10 @@ export default function TextFieldSizes(props) {
         <TextField label={name} id="standard-size-normal" onChange={e => setName(e.target.value)}  name="name" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={amount} id="standard-size-normal" name="PostItemAmount" onChange={e => setAmount(e.target.value)}/>
+        <TextField label={quantity} id="standard-size-normal" name="PostItemQuantity" onChange={e => setQuantity(e.target.value)}/>
         </Grid>
         <Grid item xs={12}>
-        <TextField label={category} id="standard-size-normal"   name="PostItemCategory" onChange={e => setCategory(e.target.value)}/>
+        <TextField label={type} id="standard-size-normal"   name="PostItemCategory" onChange={e => setType(e.target.value)}/>
         </Grid>
         <Grid item xs={12}>
         <TextField label={condition} id="standard-size-normal"   name="PostItemCondition" onChange={e => setCondition(e.target.value)}/>
