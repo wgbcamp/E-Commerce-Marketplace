@@ -17,7 +17,7 @@ var databaseToUse = ""
 
 if (process.env.NODE_ENV === "production"){
     app.use(express.static('client/build'));
-    databaseToUse = "enter db in here"
+    databaseToUse = "mongodb://warren:corvette156@ds113942.mlab.com:13942/heroku_l9vjk7jr"
 }
 else{
     databaseToUse = 'mongodb://localhost/ItemDB';
