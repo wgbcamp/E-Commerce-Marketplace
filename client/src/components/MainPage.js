@@ -101,24 +101,6 @@ var thingToDelete = {
         })
 };
 
-purchaseItem = (index) =>{
-    var data = {
-        item : this.state.itemData[index].item,
-        quantity: this.state.itemData[index].quantity,
-        type: this.state.itemData[index].type,
-        condition: this.state.itemData[index].condition,
-        price: this.state.itemData[index].price,
-        shipping: this.state.itemData[index].shipping,
-        description: this.state.itemData[index].description,
-        image: this.state.itemData[index].image
-    };
-    console.log(data);
-
-    api.purchaseItem(data)
-        .then(()=>{
-            this.readPurchases()
-        })
-}
 
 saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
@@ -127,9 +109,12 @@ saveCookie = () =>{
 saveItemID = (id, event) =>{
     event.preventDefault();
     localStorage.setItem("itemID", id)
+    
+    
 }
 
 render(){
+    
     return (
         
         <div>
@@ -156,7 +141,6 @@ render(){
                 shipping={e.shippingCost}
                 id={e._id} 
                 deleteItem={this.deleteItem}
-                purchaseItem={this.purchaseItem.bind(this, index)}
                 saveItemID={this.saveItemID}
             />
 
@@ -184,7 +168,6 @@ render(){
                 shipping={e.shipping}
                 id={e._id} 
                 deleteItem={this.deleteItem.bind(this, index)}
-                purchaseItem={this.purchaseItem.bind(this, index)}
             />
 
             </Grid>

@@ -33,7 +33,7 @@ export default function MediaCard(props) {
 <div className={classes.root}>
     
         
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={(event) => props.saveItemID(props.id, event)}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -56,22 +56,15 @@ export default function MediaCard(props) {
       </CardActionArea>
       <CardActions>
         <Link to="/details" style={{textDecoration: 'none', color:'white'}}>
-        <Button onClick={(event) => props.saveItemID(props.id, event)}  size="small" color="primary">
+        <Button size="small" color="primary">
           Details
         </Button>
         </Link>
-        <Button size="small" color="primary">
-          Share
-        </Button>
         <Button onClick={(event) => props.deleteItem(props.id, event)} value={props.id} size="small" color="primary">
           Delete
         </Button>
-        <Button onClick={props.purchaseItem} value={props.id} size="small" color="primary">
-          Purchase
-        </Button>
       </CardActions>
     </Card>
-        
     
     </div>
   );

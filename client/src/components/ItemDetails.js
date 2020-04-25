@@ -1,15 +1,35 @@
 import React, { Component } from "react";
 import HeaderBar from './HeaderBar';
 import ItemDetailsCard from './ItemDetailsCard';
+import api from "../utils/api";
 
 class ItemDetails extends Component {
 
     state = {
-        search: ""
+        search: "",
+        itemData: [{
+            _id: "",
+            name: "",
+            quantity: "",
+            type: "",
+            condition: "",
+            price: "",
+            shippingCost: "",
+            description: "",
+            image: ""
+        }]
     };
 
     componentDidMount(){
-        
+        var data = {
+            search: localStorage.getItem("itemID")
+        };
+
+        api.readItemByID(data)
+        .then((res) =>{
+            this.setState({ itemData: res.data })
+        })
+        .catch((err) => console.log(err));
     }
 
     handleInputChange = event=>{
@@ -22,8 +42,25 @@ class ItemDetails extends Component {
   
     saveCookie = () =>{
       localStorage.setItem("search", this.state.search);
-  }
+    }
 
+    purchaseItem = () =>{
+        var data = {
+            item : this.state.itemData[0].item,
+        quantity: this.state.itemData[0].quantity,
+        type: this.state.itemData[0].type,
+        condition: this.state.itemData[0].condition,
+        price: this.state.itemData[0].price,
+        shipping: this.state.itemData[0].shipping,
+        description: this.state.itemData[0].description,
+        image: this.state.itemData[0].image
+        };
+        console.log(data);
+    
+        api.purchaseItem(data)
+            
+    }
+ 
     render(){
         return (
             <div>
@@ -33,6 +70,15 @@ class ItemDetails extends Component {
                 />
 
             <ItemDetailsCard
+            key={this.state.itemData[0]._id}
+            image={"." + this.state.itemData[0].image}
+            title={this.state.itemData[0].name}
+            description={this.state.itemData[0].description}
+            price={"$" + this.state.itemData[0].price}
+            shipping={this.state.itemData[0].shippingCost}
+            id={this.state.itemData[0]._id}
+            image={this.state.itemData[0].image}
+            purchaseItem={this.purchaseItem}
             />
             </div>
         )

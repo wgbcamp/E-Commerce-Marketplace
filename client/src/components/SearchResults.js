@@ -41,6 +41,10 @@ class SearchResults extends Component {
         window.location.reload();    
     }
 
+    saveItemID = (id, event) =>{
+        event.preventDefault();
+        localStorage.setItem("itemID", id)
+    }
 
     render(){
         return (
@@ -63,7 +67,7 @@ class SearchResults extends Component {
                 price={"$" + e.price}
                 shipping={e.shippingCost}
                 id={e._id} 
-                
+                saveItemID={this.saveItemID}
             />
 
             </Grid>

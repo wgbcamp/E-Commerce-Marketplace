@@ -80,17 +80,23 @@ router.get('/api/item', (req, res) => {
 		});
 });
 
-router.get('/api/item:ID', (req, res) => {
+router.post('/api/item/byID', (req, res) => {
+	
+	let id = mongoose.Types.ObjectId(req.body.search);
+	console.log(id);
 	db.NewItem
-		.find({})
+		.find({_id: id})
 		.then((results) => {
 			res.json(results);
-			// console.log(results);
+			console.log(results);
 		})
 		.catch((err) => {
 			res.json(err);
 		});
 });
+
+
+
 
 router.get('/api/item/readpurchase', (req, res) => {
 	db.PurchaseItem

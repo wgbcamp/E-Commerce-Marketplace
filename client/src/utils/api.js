@@ -5,13 +5,12 @@ export default {
 		return axios.get('/api/item');
 	},
 	readItemByID: data => {
-		return axios.get('/api/item:ID')
+		return axios.post('/api/item/byID', data)
 	},
 	readPurchases: () => {
 		return axios.get('/api/item/readpurchase');
 	},
 	searchPosts: data => {
-		console.log('test')
 		return axios.post('/api/item/search', data);
 	},
 	postItem: data => {
@@ -23,9 +22,7 @@ export default {
 	purchaseItem: data => {
 		return axios.post('/api/item/purchase', data);
 	},
-	deleteItem: data => {
-		console.log("Utils");
-		
+	deleteItem: data => {		
 		return axios.post('/api/item/delete', data)
 		
 	}
