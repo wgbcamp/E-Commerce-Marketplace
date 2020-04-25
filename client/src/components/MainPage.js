@@ -56,9 +56,9 @@ var thingToDelete = {
 }
 
     api.deleteItem(thingToDelete)
-        // .then(()=>{
-        //     window.location.reload();    
-        // })
+        .then(()=>{
+            window.location.reload();    
+        })
 };
 
 
