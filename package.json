@@ -1,6 +1,9 @@
 {
   "name": "reactpractice",
   "version": "1.0.0",
+  "engines": {
+    "node":"12.16.x"
+  },
   "description": "Application allows users to query a set of data that will fill the page with tables containing data about users including their names, contact information, and image. Users can search for employees by their first and/or last name using the search bar.",
   "main": "server.js",
   "dependencies": {
@@ -28,7 +31,6 @@
     "start:prod": "node server.js",
     "client": "cd client && npm run start",
     "seed": "node scripts/fillDB.js",
-    "build": "cd client && npm run build",
     "start:dev": "concurrently \"node server.js\" \"npm run seed\" \"npm run client\""
   },
   "repository": {
