@@ -36,18 +36,6 @@ handleInputChange = event=>{
     
 }
 
-searchPosts = () =>{
-    var data = {
-        search: this.state.search
-    };
-
-    console.log(data)
-    api.searchPosts(data)
-        .then((res) => {
-            console.log(res)
-        });
-};
-
 
 readPurchases = () => {
     api.readPurchases()
@@ -69,14 +57,7 @@ var thingToDelete = {
 
     api.deleteItem(thingToDelete)
         .then(()=>{
-            var x = {
-                search: ""
-            };
-        
-            api.searchPosts(x)
-                .then((res) => {
-                    this.setState({ itemData: res.data });
-                });
+            window.location.reload();    
         })
 };
 
@@ -100,7 +81,6 @@ render(){
             <HeaderBar
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
-                searchPosts={this.searchPosts}
                 saveCookie={this.saveCookie}
             />
             <br></br>
