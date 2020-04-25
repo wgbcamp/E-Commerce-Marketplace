@@ -21,8 +21,6 @@ if (process.env.NODE_ENV === "production"){
     app.get('*', (req, res) => res.sendFile(path.resolve('client', 'build', 'index.html')));
 
     databaseToUse = "mongodb://warren:corvette156@ds113942.mlab.com:13942/heroku_l9vjk7jr"
-
-    routes = require('./controller/itemControllerRemote.js')
 }
 else{
     databaseToUse = 'mongodb://localhost/ItemDB';
