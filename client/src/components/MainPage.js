@@ -15,8 +15,17 @@ state = {
 };
 
 componentDidMount(){
-    this.readItem();
-    this.readPurchases();
+    // this.readItem();
+    // this.readPurchases();
+
+    var x = {
+        search: ""
+    };
+
+    api.searchPosts(x)
+        .then((res) => {
+            this.setState({ itemData: res.data });
+        });
 }
 
 handleInputChange = event=>{
