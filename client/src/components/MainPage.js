@@ -25,7 +25,7 @@ componentDidMount(){
             this.setState({ itemData: res.data });
         });
     
-    api.readPurchases(x)
+    api.readPurchases()
         .then((res) => {
             console.log(res.data);
             this.setState({ purchasedItems: res.data });
