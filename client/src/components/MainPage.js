@@ -10,18 +10,7 @@ class MainPage extends Component {
 state = {
     search: "",
     itemData: [],
-
-    PostItemName: "",
-    PostItemAmount: "",
-    PostItemCategory: "",
-    PostItemCondition: "",
-    PostItemPrice: "",
-    PostItemShippingCost: "",
-    PostItemDescription: "",
-    PostItemImage: "",
-
     itemToDelete: "",
-
     purchasedItems: []
 };
 
@@ -55,6 +44,7 @@ readItem = () => {
     api.readItem()
         .then((res) => {
             this.setState({ itemData: res.data });
+            console.log(res.data)
         })
         .catch((err) => console.log(err));
 };
@@ -67,24 +57,6 @@ readPurchases = () => {
         .catch((err) => console.log(err));
 }
 
-postItem = () =>{
-    var data = {
-        item : this.state.PostItemName,
-        quantity: this.state.PostItemAmount,
-        type: this.state.PostItemAmount,
-        condition: this.state.PostItemCondition,
-        price: this.state.PostItemPrice,
-        shipping: this.state.PostItemShippingCost,
-        description: this.state.PostItemDescription,
-        image: this.state.PostItemImage
-    };
-
-    api.postItem(data)
-        .then(()=>{
-            this.readItem()
-        })
-
-};
 
 deleteItem = (id, event) =>{
     event.preventDefault();
