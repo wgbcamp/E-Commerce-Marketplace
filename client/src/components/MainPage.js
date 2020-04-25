@@ -15,7 +15,6 @@ state = {
 };
 
 componentDidMount(){
-    this.readPurchases();
 
     var x = {
         search: ""
@@ -25,6 +24,11 @@ componentDidMount(){
         .then((res) => {
             this.setState({ itemData: res.data });
         });
+    
+    api.readPurchases(x)
+        .then((res) => {
+            this.setState({ purchasedItems: res.data });
+        })
 }
 
 handleInputChange = event=>{
@@ -34,15 +38,6 @@ handleInputChange = event=>{
         [name]: value
     });
     
-}
-
-
-readPurchases = () => {
-    api.readPurchases()
-        .then((res) => {
-            this.setState({ purchasedItems: res.data });
-        })
-        .catch((err) => console.log(err));
 }
 
 

@@ -87,8 +87,11 @@ router.post('/api/item/byID', (req, res) => {
 
 
 router.get('/api/item/readpurchase', (req, res) => {
+
+	var query = new RegExp(".*" + req.body.search + ".*", "i");
+	
 	db.PurchaseItem
-		.find({})
+		.find( { name: { $regex: query } } )
 		.then((results) => {
 			res.json(results);
 			// console.log(results);
