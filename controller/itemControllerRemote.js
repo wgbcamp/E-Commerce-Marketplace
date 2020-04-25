@@ -6,11 +6,11 @@ var path = require('path');
 
 //MULTER FILE UPLOAD//
 
-var upload = multer({ dest: './client/public/images/'});
+var upload = multer({ dest: './client/build/images/'});
 
 var storage = multer.diskStorage({   
     destination: function(req, file, cb) { 
-       cb(null, './client/public/images/');    
+       cb(null, './client/build/images/');    
     }, 
     filename: function (req, file, cb) { 
        cb(null ,  file.originalname );   
