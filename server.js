@@ -4,7 +4,8 @@ const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 
-const routes = require('./controller/itemController.js')
+const routesLocalUpload = require('./controller/itemController.js');
+const routesRemoteUpload = require('./controller/itemControllerRemote.js');
 
 const app = express();
 
@@ -21,13 +22,17 @@ if (process.env.NODE_ENV === "production"){
     app.get('*', (req, res) => res.sendFile(path.resolve('client', 'build', 'index.html')));
 
     databaseToUse = "mongodb://warren:corvette156@ds113942.mlab.com:13942/heroku_l9vjk7jr"
+
+    app.use(routesRemoteUpload);
 }
 else{
     databaseToUse = 'mongodb://localhost/ItemDB';
+
+    app.use(routesLocalUpload);
 }
 
 
-app.use(routes);
+
 
 const MONGODB_URI = process.env.MONGODB_URI || databaseToUse;
 
