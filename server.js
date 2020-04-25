@@ -13,16 +13,25 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static('client/build'));
+var databaseToUse = ""
+
+if (process.env.NODE_ENV === "production"){
+    app.use(express.static('client/build'));
+    databaseToUse = "enter db in here"
+}
+else{
+    databaseToUse = 'mongodb://localhost/ItemDB';
+}
+
 
 app.use(routes);
 
-const mongoDBconnection = 'mongodb://localhost/ItemDB';
+const MONGODB_URI = process.env.MONGODB_URI || databaseToUse;
 
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(mongoDBconnection);
+mongoose.connect(MONGODB_URI);
 
 app.listen(PORT, function(){
     console.log(`app running on port ${PORT}`);

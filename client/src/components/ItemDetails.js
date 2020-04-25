@@ -61,6 +61,13 @@ class ItemDetails extends Component {
             
     }
  
+    updateItem = () =>{
+        var thingToUpdate ={
+            thingID: this.state.itemData[0]._id
+        }
+        api.updateItem(thingToUpdate);
+    }
+
     render(){
         return (
             <div>
@@ -79,6 +86,7 @@ class ItemDetails extends Component {
             id={this.state.itemData[0]._id}
             image={this.state.itemData[0].image}
             purchaseItem={this.purchaseItem}
+            updateItem={this.updateItem}
             />
             </div>
         )

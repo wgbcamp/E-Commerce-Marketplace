@@ -143,6 +143,15 @@ router.post('/api/item/delete', (req, res) => {
 		});
 })
 
+router.put('/api/item/update', (req, res)=> {
+	console.log("update run");
+
+	let id = mongoose.Types.ObjectId(req.body.thingID);
+	console.log(id);
+
+	//insert update code here
+
+})
 
 
 module.exports = router;

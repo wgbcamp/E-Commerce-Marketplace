@@ -24,6 +24,8 @@ export default {
 	},
 	deleteItem: data => {		
 		return axios.post('/api/item/delete', data)
-		
+	},
+	updateItem: data => {
+		return axios.put('/api/item/update', data);
 	}
 };
