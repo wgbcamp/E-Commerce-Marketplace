@@ -68,18 +68,6 @@ router.post('/api/item/search', (req, res) => {
 });
 
 
-router.get('/api/item', (req, res) => {
-	db.NewItem
-		.find({})
-		.then((results) => {
-			res.json(results);
-			// console.log(results);
-		})
-		.catch((err) => {
-			res.json(err);
-		});
-});
-
 router.post('/api/item/byID', (req, res) => {
 	
 	let id = mongoose.Types.ObjectId(req.body.search);
@@ -99,11 +87,11 @@ router.post('/api/item/byID', (req, res) => {
 
 
 router.get('/api/item/readpurchase', (req, res) => {
+	
 	db.PurchaseItem
 		.find({})
 		.then((results) => {
 			res.json(results);
-			// console.log(results);
 		})
 		.catch((err) => {
 			res.json(err);
@@ -130,9 +118,7 @@ router.post('/api/item/purchase', (req, res) => {
 })
 
 router.post('/api/item/delete', (req, res) => {
-	console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	
-	console.log("I am" + req.body)
 	let id = mongoose.Types.ObjectId(req.body.thingID);
 	console.log(id);
 	
@@ -153,5 +139,77 @@ router.put('/api/item/update', (req, res)=> {
 
 })
 
+router.post('/api/signUp', (req, res)=> {
+	db.User.create({
+		username: req.body.username,
+		password: req.body.password,
+		uniqueID: req.body.uniqueID
+	})
+});
 
+router.post('/api/signIn', (req, res)=>{
+
+	var query1 = new RegExp(".*" + req.body.username + ".*", "i");
+	var query2 = new RegExp(".*" + req.body.password + ".*", "i");
+
+	db.User
+		.find({username: { $regex: query1 }, password: { $regex: query2 } } )
+		.then((results) => {
+			res.json(results);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+})
+
+router.post('/api/searchForAccount', (req, res)=>{
+
+	
+	console.log(req.body.account);
+	db.User
+		.find({uniqueID: req.body.account})
+		.then((results) => {
+			res.json(results);
+		})
+})
+
+router.post('/api/findItemSeller', (req, res)=>{
+
+	db.User
+		.find({uniqueID: req.body.account})
+		.then((results) => {
+			res.json(results);
+		})
+
+})
+
+router.post('/api/searchPostsByAccount', (req, res)=>{
+
+
+			db.NewItem
+				.find({itemSeller: req.body.account})
+				.then((results) => {
+					res.json(results);
+					console.log(results);
+				})
+
+				.catch((err) => {
+					res.json(err);
+				});
+			})
+
+router.post('/api/searchBuysByAccount', (req, res)=>{
+
+	db.PurchaseItem
+				.find({itemBuyer: req.body.account})
+				.then((results) => {
+					res.json(results);
+					console.log(results);
+				})
+
+				.catch((err) => {
+					res.json(err);
+				});
+			})
+	
 module.exports = router;

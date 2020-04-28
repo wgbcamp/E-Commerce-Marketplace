@@ -33,6 +33,10 @@ const ItemSchema = new Schema({
     image: {
         type: String,
         required: true
+    },
+    itemBuyer: {
+        type:String,
+        required: true
     }
 });
 
