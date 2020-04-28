@@ -9,31 +9,23 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme)=> ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
+const useStyles = makeStyles({
+    root: {
+      maxWidth: 1000
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9,
+      marginTop:'30'
+    }
 
-export default function MediaCard(props) {
-  const classes = useStyles();
-
-  return (
-<div className={classes.root}>
-    
-        
-    <Card className={classes.root} onClick={(event) => props.saveItemID(props.id, event)}>
+  });
+  
+  export default function ImgMediaCard(props) {
+    const classes = useStyles();
+  
+    return (
+      <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -48,21 +40,26 @@ export default function MediaCard(props) {
             {props.description}
             <br></br>
             <br></br>
+            {props.type}
+            <br></br>
+            <br></br>
             {props.price}
             <br></br>
             {props.shipping}
+            <br></br>
+            <br></br>
+            {props.itemSeller}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to="/details" style={{textDecoration: 'none', color:'white'}}>
-        <Button size="small" color="primary">
-          Details
+        <Button onClick={props.updateItem} value={props.id} size="small" color="primary">
+          Update
         </Button>
-        </Link>
+        <Button onClick={(event) => props.deleteItem(props.id, event)} value={props.id} size="small" color="primary">
+          Delete
+        </Button>
       </CardActions>
     </Card>
-    
-    </div>
-  );
-}
+    );
+  }

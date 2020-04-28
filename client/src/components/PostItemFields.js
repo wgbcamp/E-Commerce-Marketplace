@@ -43,7 +43,8 @@ export default function TextFieldSizes(props) {
     price: price,
     shippingCost: shippingCost,
     description: description,
-    image: props.imageName
+    image: props.imageName,
+    itemSeller: props.itemSeller
   }
 
   return (

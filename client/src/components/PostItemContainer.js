@@ -9,13 +9,27 @@ class PostItem3 extends Component {
         selectedFile: null,
         selectedFileName: "",
         submissionTime: "",
-        search: ""
+        search: "",
+        itemSeller: ""
     };
 
 
     componentDidMount(){
         this.setState({ submissionTime: Date.now() })
-    }
+
+
+        var x = {
+          account: localStorage.getItem("account")
+        }
+
+        api.itemSeller(x)
+          .then((res)=>{
+            console.log(res);
+            this.setState({ itemSeller: res.data[0].uniqueID });
+          })
+    
+      
+      }
 
     handleInputChange = event=>{
       const name = event.target.name;
@@ -27,7 +41,8 @@ class PostItem3 extends Component {
 
   saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
-}
+  }
+
 
     onFileChange = event => {
         var test = event.target.value.replace(/^.*[\\\/]/, '');
@@ -115,6 +130,7 @@ class PostItem3 extends Component {
                 onFileUpload={this.onFileUpload}
                 imageName={this.state.selectedFileName}
                 imageTime={this.state.submissionTime}
+                itemSeller={this.state.itemSeller}
                 />
                 
                 <div> 

@@ -55,11 +55,14 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to="/details" style={{textDecoration: 'none', color:'white'}}>
+        <Link to="/sellerdetails" style={{textDecoration: 'none', color:'white'}}>
         <Button size="small" color="primary">
           Details
         </Button>
         </Link>
+        <Button onClick={(event) => props.deleteItem(props.id, event)} value={props.id} size="small" color="primary">
+          Delete
+        </Button>
       </CardActions>
     </Card>
     

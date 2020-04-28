@@ -40,9 +40,15 @@ const useStyles = makeStyles({
             {props.description}
             <br></br>
             <br></br>
+            {props.type}
+            <br></br>
+            <br></br>
             {props.price}
             <br></br>
             {props.shipping}
+            <br></br>
+            <br></br>
+            {props.itemSeller}
           </Typography>
         </CardContent>
       </CardActionArea>

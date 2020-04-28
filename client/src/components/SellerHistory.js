@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import HeaderBar from "./HeaderBar";
-import ItemCard from "./ItemCard";
+import SellerItemCard from "./SellerItemCard";
 import ItemCardPurchased from "./ItemCardPurchased";
 import api from "../utils/api";
 
-class MainPage extends Component {
+class SellerHistory extends Component {
     
 state = {
     search: "",
@@ -39,15 +39,12 @@ componentDidMount(){
         })           
     
 
-    api.searchPosts(x)
-        .then((res) => {
-            this.setState({ itemData: res.data });
-        });
-    
-    api.readPurchases()
-        .then((res) => {
+    api.searchPostsByAccount(y)
+        .then((res)=>{
             console.log(res);
-            this.setState({ purchasedItems: res.data });
+            this.setState({ 
+                itemData: res.data
+            })
         })
 }
 
@@ -61,20 +58,20 @@ handleInputChange = event=>{
 }
 
 
-// deleteItem = (id, event) =>{
-//     event.preventDefault();
+deleteItem = (id, event) =>{
+    event.preventDefault();
 
-// console.log("This is the ID to Delete");
-// console.log(id);
-// var thingToDelete = {
-//     thingID: id
-// }
+console.log("This is the ID to Delete");
+console.log(id);
+var thingToDelete = {
+    thingID: id
+}
 
-//     api.deleteItem(thingToDelete)
-//         .then(()=>{
-//             window.location.reload();    
-//         })
-// };
+    api.deleteItem(thingToDelete)
+        .then(()=>{
+            window.location.reload();    
+        })
+};
 
 
 saveCookie = () =>{
@@ -100,14 +97,14 @@ render(){
                 currentAccount={this.state.account}
             />
             <br></br>
-            <h2>Items for Sale:</h2>
+            <h2>Selling history:</h2>
             <br></br>
             <Grid container spacing={3}>
             <Grid item xs={12}>
             <Grid container spacing={3}>
             {[...this.state.itemData].map((e, index)=>
             <Grid item xs={4}>
-            <ItemCard
+            <SellerItemCard
                 key={e._id}
                 image={"." + e.image}
                 title={e.name}
@@ -115,7 +112,7 @@ render(){
                 price={"$" + e.price}
                 shipping={e.shippingCost}
                 id={e._id} 
-                // deleteItem={this.deleteItem}
+                deleteItem={this.deleteItem}
                 saveItemID={this.saveItemID}
             />
 
@@ -124,38 +121,9 @@ render(){
             </Grid>
             </Grid>
             </Grid>
-
-
-
-            <br></br>
-            {/* <h2>Purchased Items:</h2>
-            <br></br>
-            <Grid container spacing={3}>
-            <Grid item xs={9}>
-            <Grid container spacing={3}>
-            {[...this.state.purchasedItems].map((e, index)=>
-            <Grid item xs={4}>
-            <ItemCardPurchased
-                image={"." + e.image}
-                title={e.item}
-                description={e.description}
-                price={"$" + e.price}
-                shipping={e.shipping}
-                id={e._id} 
-                // deleteItem={this.deleteItem.bind(this, index)}
-            />
-
-            </Grid>
-            )}
-            </Grid>
-            </Grid>
-            <Grid item xs={3}>
-            
-            </Grid>
-            </Grid> */}
         </div>
     )
 }
 };
 
-export default MainPage;
+export default SellerHistory;

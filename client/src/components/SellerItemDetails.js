@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import HeaderBar from './HeaderBar';
-import ItemDetailsCard from './ItemDetailsCard';
+import SellerItemDetailsCard from './SellerItemDetailsCard';
 import api from "../utils/api";
 
-class ItemDetails extends Component {
+class SellerItemDetails extends Component {
 
     state = {
         search: "",
-        currentUser: "",
         itemData: [{
             _id: "",
             name: "",
@@ -33,21 +32,6 @@ class ItemDetails extends Component {
             this.setState({ itemData: res.data })
         })
         .catch((err) => console.log(err));
-
-        
-        var x = {
-            account: localStorage.getItem("account")
-          }
-  
-          this.setState({ currentUser: x.account})
-
-          api.itemSeller(x)
-            .then((res)=>{
-              console.log(res);
-              this.setState({ itemSeller: res.data[0].username });
-            })
-      
-        
     }
 
     handleInputChange = event=>{
@@ -71,8 +55,7 @@ class ItemDetails extends Component {
         price: this.state.itemData[0].price,
         shippingCost: this.state.itemData[0].shippingCost,
         description: this.state.itemData[0].description,
-        image: this.state.itemData[0].image,
-        itemBuyer: this.state.currentUser
+        image: this.state.itemData[0].image
         };
         console.log(data);
     
@@ -83,6 +66,18 @@ class ItemDetails extends Component {
             
     }
  
+    deleteItem = (id, event) =>{
+      event.preventDefault();
+  
+  console.log("This is the ID to Delete");
+  console.log(id);
+  var thingToDelete = {
+      thingID: id
+  }
+  
+      api.deleteItem(thingToDelete)
+  };
+
     updateItem = () =>{
         var thingToUpdate ={
             thingID: this.state.itemData[0]._id
@@ -98,7 +93,7 @@ class ItemDetails extends Component {
                 saveCookie={this.saveCookie}
                 />
 
-            <ItemDetailsCard
+            <SellerItemDetailsCard
             key={this.state.itemData[0]._id}
             image={"." + this.state.itemData[0].image}
             title={this.state.itemData[0].name}
@@ -111,10 +106,12 @@ class ItemDetails extends Component {
             type={"Category: " + this.state.itemData[0].type}
             purchaseItem={this.purchaseItem}
             updateItem={this.updateItem}
+            deleteItem={this.deleteItem}
+
             />
             </div>
         )
     }
 }
 
-export default ItemDetails;
+export default SellerItemDetails;

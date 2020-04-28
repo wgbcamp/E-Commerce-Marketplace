@@ -69,7 +69,10 @@ class SearchResults extends Component {
                         handleInputChange={this.handleInputChange}
                         saveCookie={this.saveCookie}
                     />
+                    <br></br>
+                <h3>Search results:</h3>
                     <Grid container spacing={3}>
+                        
             <Grid item xs={12}>
             <Grid container spacing={3}>
             {[...this.state.itemData].map((e, index)=>
