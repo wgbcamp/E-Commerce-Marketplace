@@ -74,12 +74,22 @@ class ItemDetails extends Component {
         image: this.state.itemData[0].image,
         itemBuyer: this.state.currentUser
         };
+
         console.log(data);
     
+        var id = this.state.itemData[0]._id;
+        var thingToDelete = {
+            thingID: id
+        }
+
         api.purchaseItem(data)
             .then((res) =>{
                 console.log(res)
+
+                api.deleteItem(thingToDelete)
+                
             });
+        
             
     }
  
