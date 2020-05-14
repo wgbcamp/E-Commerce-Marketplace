@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
+import LoggedInFeatures from './LoggedInFeatures';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -88,6 +89,9 @@ export default function SearchAppBar(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             
           </Typography>
+          
+          <Grid container alienItems="flex-start" justify="flex-end" direction="row">
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -105,12 +109,10 @@ export default function SearchAppBar(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Grid >
+
             <Link to="/search" style={{textDecoration: 'none', color:'white'}}><Button color="inherit" onClick={props.saveCookie}>search</Button></Link>
 
-            <Link to="/post" style={{textDecoration: 'none', color:'white'}}><Button color="inherit">sell an item</Button></Link>
-            <Link to="/sellerHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">seller history</Button></Link>
-            <Link to="/orderHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">order history</Button></Link>
+            <LoggedInFeatures/>
             
             <Link to="/signup" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">{props.currentAccount}</Button></Link>
           
