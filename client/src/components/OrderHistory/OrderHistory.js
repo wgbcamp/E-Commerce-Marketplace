@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import HeaderBar from "./HeaderBar";
-import SellerItemCard from "./SellerItemCard";
-import ItemCardPurchased from "./ItemCardPurchased";
-import api from "../utils/api";
+import HeaderBar from "../HeaderBar/HeaderBar";
+import BuyerItemCard from "./BuyerItemCard";
+import api from "../../utils/api";
 
-class SellerHistory extends Component {
+class OrderHistory extends Component {
     
 state = {
     search: "",
     itemData: [],
-    itemToDelete: "",
     purchasedItems: [],
     account: "SignUp/SignIn",
     signInStatue: "No"
@@ -38,10 +36,9 @@ componentDidMount(){
 
         })           
     
-
-    api.searchPostsByAccount(y)
+    api.searchBuysByAccount(y)
         .then((res)=>{
-            console.log(res);
+            console.log(res.data)
             this.setState({ 
                 itemData: res.data
             })
@@ -58,20 +55,7 @@ handleInputChange = event=>{
 }
 
 
-deleteItem = (id, event) =>{
-    event.preventDefault();
 
-console.log("This is the ID to Delete");
-console.log(id);
-var thingToDelete = {
-    thingID: id
-}
-
-    api.deleteItem(thingToDelete)
-        .then(()=>{
-            window.location.reload();    
-        })
-};
 
 
 saveCookie = () =>{
@@ -97,14 +81,14 @@ render(){
                 currentAccount={this.state.account}
             />
             <br></br>
-            <h2>Selling history:</h2>
+            <h2>Order history:</h2>
             <br></br>
             <Grid container spacing={3}>
             <Grid item xs={12}>
             <Grid container spacing={3}>
             {[...this.state.itemData].map((e, index)=>
             <Grid item xs={4}>
-            <SellerItemCard
+            <BuyerItemCard
                 key={e._id}
                 image={"." + e.image}
                 title={e.name}
@@ -112,7 +96,6 @@ render(){
                 price={"$" + e.price}
                 shipping={e.shippingCost}
                 id={e._id} 
-                deleteItem={this.deleteItem}
                 saveItemID={this.saveItemID}
             />
 
@@ -126,4 +109,4 @@ render(){
 }
 };
 
-export default SellerHistory;
+export default OrderHistory;

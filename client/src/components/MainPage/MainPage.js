@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import HeaderBar from "./HeaderBar";
+import HeaderBar from "../HeaderBar/HeaderBar";
 import ItemCard from "./ItemCard";
-import ItemCardPurchased from "./ItemCardPurchased";
-import api from "../utils/api";
+import api from "../../utils/api";
 
 class MainPage extends Component {
     

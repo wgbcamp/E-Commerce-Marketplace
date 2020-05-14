@@ -107,9 +107,11 @@ export default function SearchAppBar(props) {
           </div>
           <Grid >
             <Link to="/search" style={{textDecoration: 'none', color:'white'}}><Button color="inherit" onClick={props.saveCookie}>search</Button></Link>
+
             <Link to="/post" style={{textDecoration: 'none', color:'white'}}><Button color="inherit">sell an item</Button></Link>
             <Link to="/sellerHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">seller history</Button></Link>
             <Link to="/orderHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">order history</Button></Link>
+            
             <Link to="/signup" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">{props.currentAccount}</Button></Link>
           
           </Grid>

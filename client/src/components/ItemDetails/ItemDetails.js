@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import HeaderBar from './HeaderBar';
+import HeaderBar from '../HeaderBar/HeaderBar';
 import ItemDetailsCard from './ItemDetailsCard';
-import api from "../utils/api";
+import api from "../../utils/api";
 
 class ItemDetails extends Component {
 

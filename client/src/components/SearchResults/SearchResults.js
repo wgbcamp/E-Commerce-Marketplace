@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import HeaderBar from "./HeaderBar";
-import api from "../utils/api";
+import HeaderBar from "../HeaderBar/HeaderBar";
+import api from "../../utils/api";
 import Grid from '@material-ui/core/Grid';
-import ItemCard from "./ItemCard";
+import ItemCard from "../MainPage/ItemCard";
 
 
 

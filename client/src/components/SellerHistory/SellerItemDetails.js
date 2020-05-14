@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import HeaderBar from './HeaderBar';
-import BuyerItemDetailsCard from './BuyerItemDetailsCard';
-import api from "../utils/api";
+import HeaderBar from '../HeaderBar/HeaderBar';
+import SellerItemDetailsCard from './SellerItemDetailsCard';
+import api from "../../utils/api";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-class BuyerItemDetails extends Component {
+class SellerItemDetails extends Component {
 
     state = {
         search: "",
@@ -30,11 +30,13 @@ class BuyerItemDetails extends Component {
             search: localStorage.getItem("itemID")
         };
 
-        api.readItemByIDpurchased(data)
+        api.readItemByID(data)
         .then((res) =>{
             this.setState({ itemData: res.data })
         })
         .catch((err) => console.log(err));
+
+        
     }
 
     handleInputChange = event=>{
@@ -69,6 +71,24 @@ class BuyerItemDetails extends Component {
             
     }
  
+    deleteItem = (id, event) =>{
+      event.preventDefault();
+  
+  console.log("This is the ID to Delete");
+  console.log(id);
+  var thingToDelete = {
+      thingID: id
+  }
+  
+      api.deleteItem(thingToDelete)
+  };
+
+    updateItem = () =>{
+        var thingToUpdate ={
+            thingID: this.state.itemData[0]._id
+        }
+        api.updateItem(thingToUpdate);
+    }
 
     render(){
         return (
@@ -78,7 +98,7 @@ class BuyerItemDetails extends Component {
                 saveCookie={this.saveCookie}
                 />
 
-            <BuyerItemDetailsCard
+            <SellerItemDetailsCard
             key={this.state.itemData[0]._id}
             image={"." + this.state.itemData[0].image}
             title={this.state.itemData[0].name}
@@ -87,7 +107,7 @@ class BuyerItemDetails extends Component {
             shipping={"Shipping: " + this.state.itemData[0].shippingCost}
             id={this.state.itemData[0]._id}
             image={this.state.itemData[0].image}
-            itemSeller={"Seller: " + this.state.itemData[0].originalSeller}
+            itemSeller={"Seller: " + this.state.itemData[0].itemSeller}
             type={"Category: " + this.state.itemData[0].type}
             purchaseItem={this.purchaseItem}
             updateItem={this.updateItem}
@@ -95,6 +115,37 @@ class BuyerItemDetails extends Component {
 
             />
 
+<br></br>
+<br></br>
+<h2>Update your item:</h2>
+<br></br>
+<br></br>
+<Grid container spacing={3}>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].name} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].quantity} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].type} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].condition} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].price} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].shippingCost} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].description} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <Button variant="contained" color="primary">Update</Button>
+        </Grid>
+      </Grid>
 
 
             </div>
@@ -102,4 +153,4 @@ class BuyerItemDetails extends Component {
     }
 }
 
-export default BuyerItemDetails;
+export default SellerItemDetails;

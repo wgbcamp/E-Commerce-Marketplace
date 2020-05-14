@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import api from "../utils/api";
+import api from "../../utils/api";
 import PostItemFields from "./PostItemFields";
-import HeaderBar from './HeaderBar';
+import HeaderBar from '../HeaderBar/HeaderBar';
 
 
 class PostItem3 extends Component {

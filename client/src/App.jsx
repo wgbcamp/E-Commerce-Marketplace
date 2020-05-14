@@ -1,14 +1,14 @@
 import React from 'react';
-import MainPage from './components/MainPage';
-import PostItemContainer from './components/PostItemContainer';
+import MainPage from './components/MainPage/MainPage';
+import PostItemContainer from './components/PostItem/PostItemContainer';
 import { Route, Switch } from 'react-router-dom';
-import SearchResults from './components/SearchResults';
-import ItemDetails from './components/ItemDetails';
-import SignUp from './components/SignUp';
-import SellerHistory from './components/SellerHistory';
-import SellerItemDetails from './components/SellerItemDetails';
-import OrderHistory from './components/OrderHistory';
-import BuyerItemDetails from './components/BuyerItemDetails.js'
+import SearchResults from './components/SearchResults/SearchResults';
+import ItemDetails from './components/ItemDetails/ItemDetails';
+import SignUp from './components/AccountPages/SignUp';
+import SellerHistory from './components/SellerHistory/SellerHistory';
+import SellerItemDetails from './components/SellerHistory/SellerItemDetails';
+import OrderHistory from './components/OrderHistory/OrderHistory';
+import BuyerItemDetails from './components/OrderHistory/BuyerItemDetails.js'
 
 function App() {
     return (

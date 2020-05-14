@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import api from "../utils/api";
-import PostItemFields from "./PostItemFields";
-import HeaderBar from './HeaderBar';
+import api from "../../utils/api";
+import PostItemFields from "../PostItem/PostItemFields";
+import HeaderBar from '../HeaderBar/HeaderBar';
 import AccountField from './AccountFields';
 
 class SignUp extends Component {
