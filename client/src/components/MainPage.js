@@ -113,7 +113,7 @@ render(){
                 title={e.name}
                 description={e.description}
                 price={"$" + e.price}
-                shipping={e.shippingCost}
+                shipping={"Shipping: $" + e.shippingCost}
                 id={e._id} 
                 // deleteItem={this.deleteItem}
                 saveItemID={this.saveItemID}

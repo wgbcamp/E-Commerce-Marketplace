@@ -3,7 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 
     
@@ -21,16 +25,19 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: 'center'
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 200,
+  }
 }));
 
 export default function TextFieldSizes(props) {
   const classes = useStyles();
-
   
   const [name, setName] = useState('item name');
   const [quantity, setQuantity] = useState('item quantity');
-  const [type, setType] = useState('item category');
-  const [condition, setCondition] = useState('item condition');
+  const [type, setType] = useState('');
+  const [condition, setCondition] = useState('');
   const [price, setPrice] = useState('item price');
   const [shippingCost, setShippingCost] = useState('item shipping cost');
   const [description, setDescription] = useState('item description');
@@ -57,10 +64,37 @@ export default function TextFieldSizes(props) {
         <TextField label={quantity} id="standard-size-normal" name="PostItemQuantity" onChange={e => setQuantity(e.target.value)}/>
         </Grid>
         <Grid item xs={12}>
-        <TextField label={type} id="standard-size-normal"   name="PostItemCategory" onChange={e => setType(e.target.value)}/>
+        <FormControl className={classes.formControl}>
+        <InputLabel>item category</InputLabel>
+        <Select
+          value={type}
+          onChange={e => setType(e.target.value)}>
+          <MenuItem value={"Clothing"}>Clothing</MenuItem>
+          <MenuItem value={"Sports"}>Sports</MenuItem>
+          <MenuItem value={"Gardening"}>Gardening</MenuItem>
+          <MenuItem value={"Electronics"}>Electronics</MenuItem>
+          <MenuItem value={"Toys"}>Toys</MenuItem>
+          <MenuItem value={"Books"}>Books</MenuItem>
+          <MenuItem value={"Health & Wellness"}>Health & Wellness</MenuItem>
+          <MenuItem value={"Exercise"}>Exercise</MenuItem>
+          <MenuItem value={"Music"}>Music</MenuItem>
+          <MenuItem value={"Art"}>Art</MenuItem>
+        </Select>
+      </FormControl>
         </Grid>
         <Grid item xs={12}>
-        <TextField label={condition} id="standard-size-normal"   name="PostItemCondition" onChange={e => setCondition(e.target.value)}/>
+      <FormControl className={classes.formControl}>
+        <InputLabel>item condition</InputLabel>
+        <Select
+          value={condition}
+          onChange={e => setCondition(e.target.value)}
+        >
+          <MenuItem value={"New"}>New</MenuItem>
+          <MenuItem value={"Refurbished"}>Refurbished</MenuItem>
+          <MenuItem value={"Used"}>Used</MenuItem>
+          <MenuItem value={"For parts only"}>For parts only</MenuItem>
+        </Select>
+      </FormControl>
         </Grid>
         <Grid item xs={12}>
         <TextField label={price} id="standard-size-normal"   name="PostItemPrice" onChange={e => setPrice(e.target.value)}/>
@@ -79,6 +113,7 @@ export default function TextFieldSizes(props) {
         </Grid>
       </Grid>
       <h2>{props.imageName}</h2>
+      
     </div>
   );
 }

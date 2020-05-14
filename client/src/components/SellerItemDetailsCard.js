@@ -53,9 +53,6 @@ const useStyles = makeStyles({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={props.updateItem} value={props.id} size="small" color="primary">
-          Update
-        </Button>
         <Button onClick={(event) => props.deleteItem(props.id, event)} value={props.id} size="small" color="primary">
           Delete
         </Button>

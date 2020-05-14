@@ -3,6 +3,7 @@ import api from "../utils/api";
 import PostItemFields from "./PostItemFields";
 import HeaderBar from './HeaderBar';
 
+
 class PostItem3 extends Component {
 
     state = {
@@ -68,7 +69,11 @@ class PostItem3 extends Component {
         );
 
         
-        api.postImage(formData);
+        api.postImage(formData)
+          .then((res)=>{
+            console.log(res);
+          })
+          
         console.log(this.state.selectedFile);
         console.log("The time was..." + this.state.submissionTime);
         
@@ -105,10 +110,22 @@ class PostItem3 extends Component {
 
       postItem = (postData) =>{
         console.log(postData)
-        this.onFileUpload();
-        
+        console.log(Number(postData.quantity))
+        if(
+          isNaN(postData.name) &&
+          (Number(postData.quantity) > 0) &&
+          isNaN(postData.type) &&
+          isNaN(postData.condition) &&
+          (Number(postData.price) > 0) &&
+          (Number(postData.shippingCost) >= 0) &&
+          this.state.selectedFile.size <= 1000000
+          
+          ){
+        this.onFileUpload();       
         api.postItem(postData)
-           
+        }else{
+          alert("Please check your submission to ensure you entered in the proper values. Only upload images up to 1 MB in size.")
+        }
     
     };
 

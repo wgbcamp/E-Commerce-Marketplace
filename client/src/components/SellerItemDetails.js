@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import HeaderBar from './HeaderBar';
 import SellerItemDetailsCard from './SellerItemDetailsCard';
 import api from "../utils/api";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 class SellerItemDetails extends Component {
 
@@ -109,6 +112,40 @@ class SellerItemDetails extends Component {
             deleteItem={this.deleteItem}
 
             />
+
+<br></br>
+<br></br>
+<h2>Update your item:</h2>
+<br></br>
+<br></br>
+<Grid container spacing={3}>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].name} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].quantity} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].type} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].condition} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].price} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].shippingCost} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label={this.state.itemData[0].description} id="standard-size-normal"   name="name" />
+        </Grid>
+        <Grid item xs={12}>
+        <Button variant="contained" color="primary">Update</Button>
+        </Grid>
+      </Grid>
+
+
             </div>
         )
     }
