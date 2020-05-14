@@ -110,12 +110,6 @@ class ItemDetails extends Component {
             
     }
  
-    updateItem = () =>{
-        var thingToUpdate ={
-            thingID: this.state.itemData[0]._id
-        }
-        api.updateItem(thingToUpdate);
-    }
 
     render(){
         return (
@@ -137,7 +131,7 @@ class ItemDetails extends Component {
             itemSellerName={"Seller: " + this.state.itemSellerName}
             type={"Category: " + this.state.itemData[0].type}
             purchaseItem={this.purchaseItem}
-            updateItem={this.updateItem}
+
             />
             </div>
         )

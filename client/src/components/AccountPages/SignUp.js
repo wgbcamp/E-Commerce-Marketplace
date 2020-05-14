@@ -9,7 +9,8 @@ import SignedOutFields from './SignedOutFields';
 
 
 class SignUp extends Component {
-
+    
+    
     componentDidMount(){
         if( localStorage.getItem("account") == (null) || localStorage.getItem("account") == ""){
             
@@ -40,16 +41,25 @@ class SignUp extends Component {
     }
 
     signUp = () =>{
+
+        
+
         var data = {
             username: this.state.username,
             password: this.state.password,
             uniqueID: this.state.uniqueID
         }
 
+        alert("Your account, " + data.username + " has been registered.");
+
+        
         api.signUp(data)
             .then((res) => {
                 console.log(res);
+
             })
+        
+        
     }
     
     signIn = () => {
@@ -59,11 +69,15 @@ class SignUp extends Component {
             uniqueID: this.state.uniqueID
         }
 
+        
+        alert(data.username + " has signed in.");
         api.signIn(data)
             .then((res) =>{
                 console.log(res);
                 localStorage.setItem("account", res.data[0].uniqueID);
+                window.location.reload(true);
             })
+            
     }
     
     logOut = () =>{

@@ -2,7 +2,7 @@
   "name": "reactpractice",
   "version": "1.0.0",
   "engines": {
-    "node":"12.16.x"
+    "node": "12.16.x"
   },
   "description": "Application allows users to query a set of data that will fill the page with tables containing data about users including their names, contact information, and image. Users can search for employees by their first and/or last name using the search bar.",
   "main": "server.js",
@@ -15,6 +15,7 @@
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "history": "^4.10.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.7",
     "morgan": "^1.10.0",

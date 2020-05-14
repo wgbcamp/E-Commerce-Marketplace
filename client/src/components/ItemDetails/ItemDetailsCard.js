@@ -56,9 +56,6 @@ const useStyles = makeStyles({
         <Button onClick={props.purchaseItem} value={props.id} size="small" color="primary">
           Purchase
         </Button>
-        <Button onClick={props.updateItem} value={props.id} size="small" color="primary">
-          Update
-        </Button>
       </CardActions>
     </Card>
     );
