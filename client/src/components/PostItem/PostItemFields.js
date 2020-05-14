@@ -106,7 +106,7 @@ export default function TextFieldSizes(props) {
         <TextField label={description} id="standard-size-normal" name="PostItemDescription" onChange={e => setDescription(e.target.value)}/>
         </Grid>
         <Grid item xs={12}>
-        <input type="file" name="file" class="pure-input-rounded input-element" id="new-submission-file" accept="image/*" onChange={props.onFileChange} /> 
+        <input type="file" onChange={props.onFileChange} /> 
         </Grid>
         <Grid item xs={12}>
         <Button onClick={(event)=> props.postItem(postData)} variant="contained" color="primary">Submit</Button>
