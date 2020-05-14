@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HeaderBar from './HeaderBar';
-import SellerItemDetailsCard from './SellerItemDetailsCard';
+import BuyerItemDetailsCard from './BuyerItemDetailsCard';
 import api from "../utils/api";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -69,24 +69,6 @@ class BuyerItemDetails extends Component {
             
     }
  
-    deleteItem = (id, event) =>{
-      event.preventDefault();
-  
-  console.log("This is the ID to Delete");
-  console.log(id);
-  var thingToDelete = {
-      thingID: id
-  }
-  
-      api.deleteItem(thingToDelete)
-  };
-
-    updateItem = () =>{
-        var thingToUpdate ={
-            thingID: this.state.itemData[0]._id
-        }
-        api.updateItem(thingToUpdate);
-    }
 
     render(){
         return (
@@ -96,7 +78,7 @@ class BuyerItemDetails extends Component {
                 saveCookie={this.saveCookie}
                 />
 
-            <SellerItemDetailsCard
+            <BuyerItemDetailsCard
             key={this.state.itemData[0]._id}
             image={"." + this.state.itemData[0].image}
             title={this.state.itemData[0].name}
