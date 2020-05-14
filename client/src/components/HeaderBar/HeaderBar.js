@@ -143,7 +143,7 @@ export default function SearchAppBar(props) {
 
       <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Business", e)} className={classes.headerButtons}>Business</Button>
 
-      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Exercise", e)} className={classes.headerButtons}>Exercise</Button>
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Automotive", e)} className={classes.headerButtons}>Automotive</Button>
 
       <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Music", e)} className={classes.headerButtons}>Music</Button>
 

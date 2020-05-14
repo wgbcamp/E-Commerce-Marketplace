@@ -90,13 +90,22 @@ class ItemDetails extends Component {
             thingID: id
         }
 
-        api.purchaseItem(data)
+       if( localStorage.getItem("account") == (null) || localStorage.getItem("account") == ""){
+            
+            alert("You cannot purchase items when signed out. Please sign in.")
+          }else{
+
+            api.purchaseItem(data)
             .then((res) =>{
                 console.log(res)
 
                 api.deleteItem(thingToDelete)
                 
             });
+          }
+
+
+
         
             
     }
