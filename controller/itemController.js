@@ -178,7 +178,7 @@ router.post('/api/signIn', (req, res)=>{
 
 router.post('/api/searchForAccount', (req, res)=>{
 
-	
+
 	console.log(req.body.account);
 	db.User
 		.find({uniqueID: req.body.account})

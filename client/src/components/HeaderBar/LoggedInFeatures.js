@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 
 
 export default function SearchAppBar(props) {
-    if( localStorage.getItem("account") == ""){
+    
+    if( localStorage.getItem("account") == (null) || localStorage.getItem("account") == ""){
         return (null);
       }
+
   return (
 
     <div>

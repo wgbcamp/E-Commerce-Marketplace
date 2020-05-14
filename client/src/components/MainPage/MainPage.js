@@ -23,7 +23,7 @@ componentDidMount(){
 
     var y = {
         account: localStorage.getItem("account")
-    }; 
+    };     
 
     api.searchForAccount(y)
         .then((res) => {
@@ -35,8 +35,7 @@ componentDidMount(){
                 console.log("No one is logged in");
             } 
 
-        })           
-    
+        })   
 
     api.searchPosts(x)
         .then((res) => {
@@ -58,22 +57,6 @@ handleInputChange = event=>{
     });
     
 }
-
-
-// deleteItem = (id, event) =>{
-//     event.preventDefault();
-
-// console.log("This is the ID to Delete");
-// console.log(id);
-// var thingToDelete = {
-//     thingID: id
-// }
-
-//     api.deleteItem(thingToDelete)
-//         .then(()=>{
-//             window.location.reload();    
-//         })
-// };
 
 
 saveCookie = () =>{
@@ -127,31 +110,6 @@ render(){
 
 
             <br></br>
-            {/* <h2>Purchased Items:</h2>
-            <br></br>
-            <Grid container spacing={3}>
-            <Grid item xs={9}>
-            <Grid container spacing={3}>
-            {[...this.state.purchasedItems].map((e, index)=>
-            <Grid item xs={4}>
-            <ItemCardPurchased
-                image={"." + e.image}
-                title={e.item}
-                description={e.description}
-                price={"$" + e.price}
-                shipping={e.shipping}
-                id={e._id} 
-                // deleteItem={this.deleteItem.bind(this, index)}
-            />
-
-            </Grid>
-            )}
-            </Grid>
-            </Grid>
-            <Grid item xs={3}>
-            
-            </Grid>
-            </Grid> */}
         </div>
     )
 }
