@@ -72,9 +72,14 @@ var thingToDelete = {
         })
 };
 
+SaveCookieTag = e =>{
+    localStorage.setItem("searchTag", e);
+    localStorage.setItem("search", "");
+}
 
 saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
+    localStorage.setItem("searchTag", "");
 }
 
 saveItemID = (id, event) =>{
@@ -94,6 +99,7 @@ render(){
                 handleInputChange={this.handleInputChange}
                 saveCookie={this.saveCookie}
                 currentAccount={this.state.account}
+                SaveCookieTag={this.SaveCookieTag}
             />
             <br></br>
             <h2>Selling history:</h2>

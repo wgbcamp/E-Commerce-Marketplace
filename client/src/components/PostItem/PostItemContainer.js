@@ -42,8 +42,13 @@ class PostItem3 extends Component {
 
   saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
-  }
+    localStorage.setItem("searchTag", "");
+}
 
+SaveCookieTag = e =>{
+  localStorage.setItem("searchTag", e);
+  localStorage.setItem("search", "");
+}
 
     onFileChange = event => {
         var test = event.target.value.replace(/^.*[\\\/]/, '');
@@ -140,6 +145,7 @@ class PostItem3 extends Component {
                 <HeaderBar
                 handleInputChange={this.handleInputChange}
                 saveCookie={this.saveCookie}
+                SaveCookieTag={this.SaveCookieTag}
                 />
                 <PostItemFields
                 postItem={this.postItem}

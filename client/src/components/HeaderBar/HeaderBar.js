@@ -126,18 +126,31 @@ export default function SearchAppBar(props) {
           </Grid>
         </Toolbar>
       </AppBar>
+      <Link to="/search">
       <Grid container spacing={0} direction="row" justify="center">
-      <Button variant="contained" color="default" className={classes.headerButtons}>Clothing</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Sports</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Gardening</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Electronics</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Toys</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Books</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Business</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Exercise</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Music</Button>
-      <Button variant="contained" color="default" className={classes.headerButtons}>Art</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Clothing", e)} className={classes.headerButtons}>Clothing</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Sports", e)} className={classes.headerButtons}>Sports</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Gardening", e)} className={classes.headerButtons}>Gardening</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Electronics", e)} className={classes.headerButtons}>Electronics</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Toys", e)} className={classes.headerButtons}>Toys</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Books", e)} className={classes.headerButtons}>Books</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Business", e)} className={classes.headerButtons}>Business</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Exercise", e)} className={classes.headerButtons}>Exercise</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Music", e)} className={classes.headerButtons}>Music</Button>
+
+      <Button variant="contained" color="default" onClick={(e) => props.SaveCookieTag("Art", e)} className={classes.headerButtons}>Art</Button>
+
       </Grid>
+      </Link>
     </div>
     
   );

@@ -13,6 +13,9 @@ export default {
 	searchPosts: data => {
 		return axios.post('/api/item/search', data);
 	},
+	searchPostsByTag: data => {
+		return axios.post('/api/item/searchByTag', data);
+	},
 	postItem: data => {
 		return axios.post('/api/item', data)
 	},

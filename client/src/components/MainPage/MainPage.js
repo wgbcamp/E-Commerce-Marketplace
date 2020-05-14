@@ -59,12 +59,18 @@ handleInputChange = event=>{
     
 }
 
+SaveCookieTag = e =>{
+    localStorage.setItem("searchTag", e);
+    localStorage.setItem("search", "");
+}
+
 logOut = () =>{
     localStorage.setItem("account", "");
 }
 
 saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
+    localStorage.setItem("searchTag", "");
 }
 
 saveItemID = (id, event) =>{
@@ -86,6 +92,7 @@ render(){
                 saveCookie={this.saveCookie}
                 currentAccount={this.state.account}
                 logOut={this.logOut}
+                SaveCookieTag={this.SaveCookieTag}
             />
              
             <br></br>

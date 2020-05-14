@@ -67,6 +67,20 @@ router.post('/api/item/search', (req, res) => {
 
 });
 
+router.post('/api/item/searchByTag', (req, res) => {
+
+	var query = new RegExp(".*" + req.body.searchTag + ".*", "i");
+
+	db.NewItem
+		.find( { type: { $regex: query } } )
+		.then((results) => {
+			res.json(results);
+		})
+		.catch((err) => {
+			res.json(err);
+		})
+})
+
 
 router.post('/api/item/byID', (req, res) => {
 	

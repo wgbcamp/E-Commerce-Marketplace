@@ -59,8 +59,14 @@ class ItemDetails extends Component {
         });
     }
   
+    SaveCookieTag = e =>{
+        localStorage.setItem("searchTag", e);
+        localStorage.setItem("search", "");
+    }
+
     saveCookie = () =>{
-      localStorage.setItem("search", this.state.search);
+        localStorage.setItem("search", this.state.search);
+        localStorage.setItem("searchTag", "");
     }
 
     purchaseItem = () =>{

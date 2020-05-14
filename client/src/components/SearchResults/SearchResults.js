@@ -16,15 +16,28 @@ class SearchResults extends Component {
     };
 
     componentDidMount(){
-        console.log(localStorage.getItem("search"));
+        
         var x = {
             search: localStorage.getItem("search")
         };
+
+        var y = {
+            searchTag: localStorage.getItem("searchTag")
+        }
+        
+        if(x.search == ""){
+
+            api.searchPostsByTag(y)
+                .then((res) => {
+                    this.setState({itemData: res.data });
+                })
+        }else{
 
         api.searchPosts(x)
             .then((res) => {
                 this.setState({ itemData: res.data });
             });
+        }
     }
 
     handleInputChange = event=>{
@@ -56,6 +69,12 @@ class SearchResults extends Component {
         window.location.reload();    
     }
 
+    SaveCookieTag = e =>{
+        localStorage.setItem("searchTag", e);
+        localStorage.setItem("search", "");
+        window.location.reload();
+    }
+
     saveItemID = (id, event) =>{
         event.preventDefault();
         localStorage.setItem("itemID", id)
@@ -68,6 +87,7 @@ class SearchResults extends Component {
                     <HeaderBar
                         handleInputChange={this.handleInputChange}
                         saveCookie={this.saveCookie}
+                        SaveCookieTag={this.SaveCookieTag}
                     />
                     <br></br>
                 <h3>Search results:</h3>
