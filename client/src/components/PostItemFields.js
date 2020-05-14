@@ -112,7 +112,7 @@ export default function TextFieldSizes(props) {
         <Button onClick={(event)=> props.postItem(postData)} variant="contained" color="primary">Submit</Button>
         </Grid>
       </Grid>
-      <h2>{props.imageName}</h2>
+      {/* <h2>{props.imageName}</h2> */}
       
     </div>
   );

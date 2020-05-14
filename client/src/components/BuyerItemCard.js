@@ -9,23 +9,31 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 1000
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9,
-      marginTop:'30'
-    }
+const useStyles = makeStyles((theme)=> ({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
-  });
-  
-  export default function ImgMediaCard(props) {
-    const classes = useStyles();
-  
-    return (
-      <Card className={classes.root}>
+export default function MediaCard(props) {
+  const classes = useStyles();
+
+  return (
+<div className={classes.root}>
+    
+        
+    <Card className={classes.root} onClick={(event) => props.saveItemID(props.id, event)}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -40,26 +48,21 @@ const useStyles = makeStyles({
             {props.description}
             <br></br>
             <br></br>
-            {props.type}
-            <br></br>
-            <br></br>
             {props.price}
             <br></br>
             {props.shipping}
-            <br></br>
-            <br></br>
-            {props.itemSellerName}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={props.purchaseItem} value={props.id} size="small" color="primary">
-          Purchase
+        <Link to="/buyerdetails" style={{textDecoration: 'none', color:'white'}}>
+        <Button size="small" color="primary">
+          Details
         </Button>
-        <Button onClick={props.updateItem} value={props.id} size="small" color="primary">
-          Update
-        </Button>
+        </Link>
       </CardActions>
     </Card>
-    );
-  }
+    
+    </div>
+  );
+}

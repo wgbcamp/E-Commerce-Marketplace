@@ -20,7 +20,8 @@ class ItemDetails extends Component {
             image: "",
             itemSeller: "",
             type: ""
-        }]
+        }],
+        itemSellerName: ""
     };
 
     componentDidMount(){
@@ -28,24 +29,24 @@ class ItemDetails extends Component {
             search: localStorage.getItem("itemID")
         };
 
+        this.setState({ currentUser: localStorage.getItem("account") })
+
         api.readItemByID(data)
         .then((res) =>{
             this.setState({ itemData: res.data })
+            var x = {
+                account: this.state.itemData[0].itemSeller
+              }
+              console.log(x);
+
+              api.itemSeller(x)
+          
+              .then((res)=>{
+                console.log(res);
+                this.setState({ itemSellerName: res.data[0].username });
+              })
         })
         .catch((err) => console.log(err));
-
-        
-        var x = {
-            account: localStorage.getItem("account")
-          }
-  
-          this.setState({ currentUser: x.account})
-
-          api.itemSeller(x)
-            .then((res)=>{
-              console.log(res);
-              this.setState({ itemSeller: res.data[0].username });
-            })
       
         
     }
@@ -72,7 +73,8 @@ class ItemDetails extends Component {
         shippingCost: this.state.itemData[0].shippingCost,
         description: this.state.itemData[0].description,
         image: this.state.itemData[0].image,
-        itemBuyer: this.state.currentUser
+        itemBuyer: this.state.currentUser,
+        originalSeller: this.state.itemSellerName
         };
 
         console.log(data);
@@ -112,12 +114,12 @@ class ItemDetails extends Component {
             key={this.state.itemData[0]._id}
             image={"." + this.state.itemData[0].image}
             title={this.state.itemData[0].name}
-            description={this.state.itemData[0].description}
-            price={"$" + this.state.itemData[0].price}
+            description={"Description: " + this.state.itemData[0].description}
+            price={"Price: $" + this.state.itemData[0].price}
             shipping={"Shipping: $" + this.state.itemData[0].shippingCost}
             id={this.state.itemData[0]._id}
             image={this.state.itemData[0].image}
-            itemSeller={"Seller: " + this.state.itemData[0].itemSeller}
+            itemSellerName={"Seller: " + this.state.itemSellerName}
             type={"Category: " + this.state.itemData[0].type}
             purchaseItem={this.purchaseItem}
             updateItem={this.updateItem}

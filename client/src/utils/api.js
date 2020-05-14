@@ -4,6 +4,9 @@ export default {
 	readItemByID: data => {
 		return axios.post('/api/item/byID', data)
 	},
+	readItemByIDpurchased: data => {
+		return axios.post('/api/item/byIDpurchased', data)
+	},
 	readPurchases: () => {
 		return axios.get('/api/item/readpurchase');
 	},

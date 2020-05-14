@@ -45,10 +45,10 @@ export default function MediaCard(props) {
           {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.description}
+            {"Description: " + props.description}
             <br></br>
             <br></br>
-            {props.price}
+            {"Price: " + props.price}
             <br></br>
             {props.shipping}
           </Typography>

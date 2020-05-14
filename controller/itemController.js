@@ -83,6 +83,20 @@ router.post('/api/item/byID', (req, res) => {
 		});
 });
 
+router.post('/api/item/byIDpurchased', (req, res) => {
+	
+	let id = mongoose.Types.ObjectId(req.body.search);
+	console.log(id);
+	db.PurchaseItem
+		.find({_id: id})
+		.then((results) => {
+			res.json(results);
+			console.log(results);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
 
 
 
@@ -174,7 +188,7 @@ router.post('/api/searchForAccount', (req, res)=>{
 })
 
 router.post('/api/findItemSeller', (req, res)=>{
-
+	console.log("HELLO! " + req.body.account);
 	db.User
 		.find({uniqueID: req.body.account})
 		.then((results) => {

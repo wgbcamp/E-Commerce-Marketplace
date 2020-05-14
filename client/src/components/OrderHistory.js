@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import HeaderBar from "./HeaderBar";
-import SellerItemCard from "./SellerItemCard";
+import BuyerItemCard from "./BuyerItemCard";
 import ItemCardPurchased from "./ItemCardPurchased";
 import api from "../utils/api";
 
-class SellerHistory extends Component {
+class OrderHistory extends Component {
     
 state = {
     search: "",
     itemData: [],
-    itemToDelete: "",
     purchasedItems: [],
     account: "SignUp/SignIn",
     signInStatue: "No"
@@ -57,20 +56,7 @@ handleInputChange = event=>{
 }
 
 
-deleteItem = (id, event) =>{
-    event.preventDefault();
 
-console.log("This is the ID to Delete");
-console.log(id);
-var thingToDelete = {
-    thingID: id
-}
-
-    api.deleteItem(thingToDelete)
-        .then(()=>{
-            window.location.reload();    
-        })
-};
 
 
 saveCookie = () =>{
@@ -103,7 +89,7 @@ render(){
             <Grid container spacing={3}>
             {[...this.state.itemData].map((e, index)=>
             <Grid item xs={4}>
-            <SellerItemCard
+            <BuyerItemCard
                 key={e._id}
                 image={"." + e.image}
                 title={e.name}
@@ -111,7 +97,6 @@ render(){
                 price={"$" + e.price}
                 shipping={e.shippingCost}
                 id={e._id} 
-                deleteItem={this.deleteItem}
                 saveItemID={this.saveItemID}
             />
 
@@ -125,4 +110,4 @@ render(){
 }
 };
 
-export default SellerHistory;
+export default OrderHistory;
