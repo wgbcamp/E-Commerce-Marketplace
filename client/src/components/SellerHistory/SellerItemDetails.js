@@ -22,7 +22,14 @@ class SellerItemDetails extends Component {
             image: "",
             itemSeller: "",
             type: ""
-        }]
+        }],
+        updateName: "",
+        updateQuantity: "",
+        updateType: "",
+        updateCondition: "",
+        updatePrice: "",
+        updateShippingCost: "",
+        updateDescription: ""
     };
 
     componentDidMount(){
@@ -84,10 +91,18 @@ class SellerItemDetails extends Component {
   };
 
     updateItem = () =>{
-        var thingToUpdate ={
-            thingID: this.state.itemData[0]._id
+        var updateData ={
+            _id: this.state.itemData[0]._id,
+            name: this.state.updateName,
+            quantity: this.state.updateQuantity,
+            type: this.state.updateType,
+            condition: this.state.updateCondition,
+            price: this.state.updatePrice,
+            shippingCost: this.state.updateShippingCost,
+            description: this.state.updateDescription
         }
-        api.updateItem(thingToUpdate);
+        api.updateItem(updateData);
+        window.location.reload(true);
     }
 
     render(){
@@ -122,28 +137,28 @@ class SellerItemDetails extends Component {
 <br></br>
 <Grid container spacing={3}>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].name} id="standard-size-normal"   name="name" />
+        <TextField label={"Name: " + this.state.itemData[0].name} id="standard-size-normal" onChange={this.handleInputChange}  name="updateName" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].quantity} id="standard-size-normal"   name="name" />
+        <TextField label={"Quantity: " + this.state.itemData[0].quantity} id="standard-size-normal" onChange={this.handleInputChange}  name="updateQuantity" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].type} id="standard-size-normal"   name="name" />
+        <TextField label={"Category: " + this.state.itemData[0].type} id="standard-size-normal" onChange={this.handleInputChange}  name="updateType" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].condition} id="standard-size-normal"   name="name" />
+        <TextField label={"Condition:" + this.state.itemData[0].condition} id="standard-size-normal" onChange={this.handleInputChange}  name="updateCondition" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].price} id="standard-size-normal"   name="name" />
+        <TextField label={"Price: $" + this.state.itemData[0].price} id="standard-size-normal" onChange={this.handleInputChange}  name="updatePrice" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].shippingCost} id="standard-size-normal"   name="name" />
+        <TextField label={"Shipping cost: $" + this.state.itemData[0].shippingCost} id="standard-size-normal" onChange={this.handleInputChange}  name="updateShippingCost" />
         </Grid>
         <Grid item xs={12}>
-        <TextField label={this.state.itemData[0].description} id="standard-size-normal"   name="name" />
+        <TextField label={"Description: ..."} id="standard-size-normal" onChange={this.handleInputChange}  name="updateDescription" />
         </Grid>
         <Grid item xs={12}>
-        <Button variant="contained" color="primary">Update</Button>
+        <Button variant="contained" color="primary" onClick={this.updateItem}>Update</Button>
         </Grid>
       </Grid>
 

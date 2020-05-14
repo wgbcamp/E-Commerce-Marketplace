@@ -161,10 +161,14 @@ router.post('/api/item/delete', (req, res) => {
 router.put('/api/item/update', (req, res)=> {
 	console.log("update run");
 
-	let id = mongoose.Types.ObjectId(req.body.thingID);
+	let id = mongoose.Types.ObjectId(req.body._id);
 	console.log(id);
 
-	//insert update code here
+	db.NewItem.findOneAndUpdate({ "_id": id }, { "$set": { "name": req.body.name, "quantity": req.body.quantity, "type": req.body.type, "condition": req.body.condition, "price": req.body.price, "shippingCost": req.body.shippingCost, "description": req.body.description}})
+		.then(results => res.json(results))
+		.catch((err)=>{
+			console.log(err);
+		});
 
 })
 
