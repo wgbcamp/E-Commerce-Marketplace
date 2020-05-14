@@ -75,7 +75,7 @@ export default function TextFieldSizes(props) {
           <MenuItem value={"Electronics"}>Electronics</MenuItem>
           <MenuItem value={"Toys"}>Toys</MenuItem>
           <MenuItem value={"Books"}>Books</MenuItem>
-          <MenuItem value={"Health & Wellness"}>Health & Wellness</MenuItem>
+          <MenuItem value={"Health & Wellness"}>Business</MenuItem>
           <MenuItem value={"Exercise"}>Exercise</MenuItem>
           <MenuItem value={"Music"}>Music</MenuItem>
           <MenuItem value={"Art"}>Art</MenuItem>

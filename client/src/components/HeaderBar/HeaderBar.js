@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  headerButtons: {
+    width: 160,
+    height: 35,
+    fontSize: 15
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -119,16 +124,18 @@ export default function SearchAppBar(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Button variant="contained" color="default">Clothing</Button>
-      <Button variant="contained" color="default">Sports</Button>
-      <Button variant="contained" color="default">Gardening</Button>
-      <Button variant="contained" color="default">Electronics</Button>
-      <Button variant="contained" color="default">Toys</Button>
-      <Button variant="contained" color="default">Books</Button>
-      <Button variant="contained" color="default">Health & Wellness</Button>
-      <Button variant="contained" color="default">Exercise</Button>
-      <Button variant="contained" color="default">Music</Button>
-      <Button variant="contained" color="default">Art</Button>
+      <Grid container spacing={0} direction="row" justify="center">
+      <Button variant="contained" color="default" className={classes.headerButtons}>Clothing</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Sports</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Gardening</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Electronics</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Toys</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Books</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Business</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Exercise</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Music</Button>
+      <Button variant="contained" color="default" className={classes.headerButtons}>Art</Button>
+      </Grid>
     </div>
     
   );
