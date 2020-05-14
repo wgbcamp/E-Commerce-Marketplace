@@ -4,6 +4,7 @@ import HeaderBar from "../HeaderBar/HeaderBar";
 import ItemCard from "./ItemCard";
 import api from "../../utils/api";
 
+
 class MainPage extends Component {
     
 state = {
@@ -58,6 +59,9 @@ handleInputChange = event=>{
     
 }
 
+logOut = () =>{
+    localStorage.setItem("account", "");
+}
 
 saveCookie = () =>{
     localStorage.setItem("search", this.state.search);
@@ -75,12 +79,15 @@ render(){
     return (
         
         <div>
+            
             <HeaderBar
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
                 saveCookie={this.saveCookie}
                 currentAccount={this.state.account}
+                logOut={this.logOut}
             />
+             
             <br></br>
             <h2>Items for Sale:</h2>
             <br></br>

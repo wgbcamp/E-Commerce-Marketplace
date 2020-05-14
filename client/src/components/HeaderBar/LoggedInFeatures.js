@@ -20,6 +20,7 @@ export default function SearchAppBar(props) {
             <Link to="/sellerHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">seller history</Button></Link>
             <Link to="/orderHistory" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">order history</Button></Link>
             
+            
     </div>
     
   );

@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import LoggedInFeatures from './LoggedInFeatures';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -120,6 +121,7 @@ export default function SearchAppBar(props) {
             <LoggedInFeatures/>
             
             <Link to="/signup" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">{props.currentAccount}</Button></Link>
+
           
           </Grid>
         </Toolbar>

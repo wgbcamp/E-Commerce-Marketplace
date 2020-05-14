@@ -3,8 +3,22 @@ import api from "../../utils/api";
 import PostItemFields from "../PostItem/PostItemFields";
 import HeaderBar from '../HeaderBar/HeaderBar';
 import AccountField from './AccountFields';
+import SignedInFields from './SignedInFields';
+import SignedOutFields from './SignedOutFields';
+
+
 
 class SignUp extends Component {
+
+    componentDidMount(){
+        if( localStorage.getItem("account") == (null) || localStorage.getItem("account") == ""){
+            
+            this.setState({
+                loggedOut: true
+            })
+          }   
+      }
+    
 
     state = {
         search: "",
@@ -57,20 +71,23 @@ class SignUp extends Component {
     }
     
     render(){
-        return (
-            <div>
-                <HeaderBar
-                handleInputChange={this.handleInputChange}
-                saveCookie={this.saveCookie}
-                />
-                <AccountField
-                handleInputChange={this.handleInputChange}
-                signUp={this.signUp}
-                signIn={this.signIn}
-                logOut={this.logOut}
-                />
-            </div>
-        )
+        const loggedOut = this.state.loggedOut;
+        if(loggedOut){
+            
+            return <SignedOutFields
+            handleInputChange={this.handleInputChange}
+            signUp={this.signUp}
+            signIn={this.signIn}
+            />
+
+        }else{
+            
+
+            return <SignedInFields
+            logOut={this.logOut}
+            />
+        }
+
     }
 }
 
