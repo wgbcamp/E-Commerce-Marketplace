@@ -84,7 +84,7 @@ class BuyerItemDetails extends Component {
             title={this.state.itemData[0].name}
             description={this.state.itemData[0].description}
             price={"$" + this.state.itemData[0].price}
-            shipping={"Shipping: " + this.state.itemData[0].shippingCost}
+            shipping={"Shipping: $" + this.state.itemData[0].shippingCost}
             id={this.state.itemData[0]._id}
             image={this.state.itemData[0].image}
             itemSeller={"Seller: " + this.state.itemData[0].originalSeller}
