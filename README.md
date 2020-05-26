@@ -44,7 +44,7 @@ Start development environment with:
 npm run start
 ```
 
-### Technologies 
+## Technologies 
 
 * MongoDB
 * Express.js
