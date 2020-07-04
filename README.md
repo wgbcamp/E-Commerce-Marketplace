@@ -15,7 +15,7 @@ The following instructions will allow you to clone the project to your machine f
 Git clone to your local machine:
 
 ```
-https://github.com/wgbcamp/Project3.git
+https://github.com/wgbcamp/E-Commerce-Marketplace.git
 ```
 
 ### Running Application
