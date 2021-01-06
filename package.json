@@ -7,7 +7,7 @@
   "description": "Application allows users to query a set of data that will fill the page with tables containing data about users including their names, contact information, and image. Users can search for employees by their first and/or last name using the search bar.",
   "main": "server.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
